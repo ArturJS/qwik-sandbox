@@ -1,0 +1,23 @@
+diff --git a/node_modules/@builder.io/qwik-react/lib/client.1abdbc9a.js b/node_modules/@builder.io/qwik-react/lib/client.1abdbc9a.js
+index 25c4e75..944fa7d 100644
+--- a/node_modules/@builder.io/qwik-react/lib/client.1abdbc9a.js
++++ b/node_modules/@builder.io/qwik-react/lib/client.1abdbc9a.js
+@@ -1,15 +1,11 @@
+-import { jsx } from "@emotion/react/jsx-runtime";
++import React from "react";
+ import { CacheProvider } from "@emotion/react";
+-import createCache from "@emotion/cache";
+ import { createElement } from "react";
+ import { createRoot, hydrateRoot } from "react-dom/client";
+-const key = "css";
+-const cache = createCache({
+-  key
+-});
++
++const jsx = React.createElement;
+ const Cmp = ({ Cmp: Cmp2, ev, ...props }) => {
+   return /* @__PURE__ */ jsx(CacheProvider, {
+-    value: cache,
+     children: /* @__PURE__ */ jsx(Cmp2, {
+       ...props
+     })

@@ -1,0 +1,73 @@
+diff --git a/node_modules/@emotion/react/jsx-runtime/dist/emotion-react-jsx-runtime.browser.esm.js b/node_modules/@emotion/react/jsx-runtime/dist/emotion-react-jsx-runtime.browser.esm.js
+index ac81b30..e33f8f8 100644
+--- a/node_modules/@emotion/react/jsx-runtime/dist/emotion-react-jsx-runtime.browser.esm.js
++++ b/node_modules/@emotion/react/jsx-runtime/dist/emotion-react-jsx-runtime.browser.esm.js
+@@ -1,6 +1,5 @@
+ import 'react';
+ import '@emotion/cache';
+-import { h as hasOwnProperty, E as Emotion, c as createEmotionProps } from '../../dist/emotion-element-6a883da9.browser.esm.js';
+ import '@babel/runtime/helpers/extends';
+ import '@emotion/weak-memoize';
+ import 'hoist-non-react-statics';
+@@ -8,22 +7,10 @@ import '../../_isolated-hnrs/dist/emotion-react-_isolated-hnrs.browser.esm.js';
+ import '@emotion/utils';
+ import '@emotion/serialize';
+ import '@emotion/use-insertion-effect-with-fallbacks';
+-import { Fragment as Fragment$1, jsx as jsx$1, jsxs as jsxs$1 } from 'react/jsx-runtime';
+-
+-var Fragment = Fragment$1;
+-function jsx(type, props, key) {
+-  if (!hasOwnProperty.call(props, 'css')) {
+-    return jsx$1(type, props, key);
+-  }
+-
+-  return jsx$1(Emotion, createEmotionProps(type, props), key);
+-}
+-function jsxs(type, props, key) {
+-  if (!hasOwnProperty.call(props, 'css')) {
+-    return jsxs$1(type, props, key);
+-  }
+-
+-  return jsxs$1(Emotion, createEmotionProps(type, props), key);
+-}
++import { 
++  Fragment,
++  jsx,
++  jsxs,
++} from 'react/jsx-runtime';
+ 
+ export { Fragment, jsx, jsxs };
+diff --git a/node_modules/@emotion/react/jsx-runtime/dist/emotion-react-jsx-runtime.esm.js b/node_modules/@emotion/react/jsx-runtime/dist/emotion-react-jsx-runtime.esm.js
+index 60ccc7b..7b2d3f0 100644
+--- a/node_modules/@emotion/react/jsx-runtime/dist/emotion-react-jsx-runtime.esm.js
++++ b/node_modules/@emotion/react/jsx-runtime/dist/emotion-react-jsx-runtime.esm.js
+@@ -8,17 +8,19 @@ import '../../_isolated-hnrs/dist/emotion-react-_isolated-hnrs.esm.js';
+ import '@emotion/utils';
+ import '@emotion/serialize';
+ import '@emotion/use-insertion-effect-with-fallbacks';
+-import { Fragment as Fragment$1, jsx as jsx$1, jsxs as jsxs$1 } from 'react/jsx-runtime';
++import { 
++  // Fragment as Fragment$1, 
++  jsx as jsx$1, jsxs as jsxs$1 } from 'react/jsx-runtime';
+ 
+-var Fragment = Fragment$1;
+-function jsx(type, props, key) {
++export const Fragment = Symbol.for('react.fragment');//Fragment$1;
++export function jsx(type, props, key) {
+   if (!hasOwnProperty.call(props, 'css')) {
+     return jsx$1(type, props, key);
+   }
+ 
+   return jsx$1(Emotion, createEmotionProps(type, props), key);
+ }
+-function jsxs(type, props, key) {
++export function jsxs(type, props, key) {
+   if (!hasOwnProperty.call(props, 'css')) {
+     return jsxs$1(type, props, key);
+   }
+@@ -26,4 +28,4 @@ function jsxs(type, props, key) {
+   return jsxs$1(Emotion, createEmotionProps(type, props), key);
+ }
+ 
+-export { Fragment, jsx, jsxs };
++// export { Fragment, jsx, jsxs };
